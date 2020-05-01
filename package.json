@@ -1,0 +1,16 @@
+{
+  "name": "common-sense",
+  "version": "1.0.0",
+  "description": "Commonly useful functions",
+  "main": "index.js",
+  "repository": "git@github.com:musicin3d/common-sense.git",
+  "author": "musicin3d",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "jest": "^25.5.3"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
