@@ -9,7 +9,7 @@ it('handles promises from successful tests', async ()=>{
         const target = array[i]
         const test = val => new Promise((resolve)=>{
             setTimeout(()=>{
-                resolve( binarySearch.compare(target.length, val.length) )
+                resolve( binarySearch.compare(val.length, target.length) )
             }, 0)
         })
         await expect(binarySearch(array, test)).resolves.toBe(i)
@@ -22,7 +22,7 @@ it('handles promises from failed tests', async ()=>{
     for(let target of targets){
         const test = val => new Promise((resolve)=>{
             setTimeout(()=>{
-                resolve( binarySearch.compare(target.length, val.length) )
+                resolve( binarySearch.compare(val.length, target.length) )
             }, 0)
         })
         await expect(binarySearch(array, test)).resolves.toBeNull()

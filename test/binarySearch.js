@@ -3,9 +3,9 @@ const binarySearch = require('../lib/binarySearch')
 
 
 test('default test compares numbers', ()=>{
-    expect(binarySearch.compare( 5, 4)).toBe(1)
-    expect(binarySearch.compare( 5, 6)).toBe(-1)
-    expect(binarySearch.compare( 5, 5)).toBe(0)
+    expect(binarySearch.compare(4, 5)).toBe(-1)
+    expect(binarySearch.compare(6, 5)).toBe(1)
+    expect(binarySearch.compare(5, 5)).toBe(0)
 })
 
 
@@ -51,7 +51,7 @@ it('finds a positive test anywhere in an array', ()=>{
     for(let i in array){
         i *= 1
         const target = array[i]
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test)).toBe(i)
     }
 })
@@ -60,7 +60,7 @@ it('returns null if the test cannot be satisified by an array', ()=>{
     const array = ['aa', 'aaa', 'aaaa','aaaabb', 'aaaabbb']
     const targets = ['a', 'aaaab', 'aaaabbbb']
     for(let target of targets){
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test)).toBeNull()
     }
 })
@@ -69,7 +69,7 @@ it('returns null if the test cannot be satisified by an array', ()=>{
 it('finds a positive test anywhere in a range', ()=>{
     const max = 9
     for(let target = 0; target <= max; target++){
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test)).toBe(target)
     }
 })
@@ -78,7 +78,7 @@ it('returns null if the test cannot be satisified by a range', ()=>{
     const max = 9
     const targets = [-1, 10, 5.5]
     for(let target of targets){
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test)).toBeNull()
     }
 })
@@ -132,7 +132,7 @@ it('below threshold: finds a positive test anywhere in an array, regardless', ()
     for(let i in array){
         i *= 1
         const target = array[i]
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test, -1)).toBe(i)
     }
 })
@@ -145,7 +145,7 @@ it('below threshold: returns the lower near-match if the test cannot be satisifi
         i *= 1
         const target = targets[i]
         const expected = expecteds[i]
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test, -1)).toBe(expected)
     }
 })
@@ -154,7 +154,7 @@ it('below threshold: returns the lower near-match if the test cannot be satisifi
 it('below threshold: finds a positive test anywhere in a range, regardless', ()=>{
     const max = 9
     for(let target = 0; target <= max; target++){
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test, -1)).toBe(target)
     }
 })
@@ -167,7 +167,7 @@ it('below threshold: returns the lower near-match if the test cannot be satisifi
         i *= 1
         const target = targets[i]
         const expected = expecteds[i]
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test, -1)).toBe(expected)
     }
 })
@@ -221,7 +221,7 @@ it('above threshold: finds a positive test anywhere in an array, regardless', ()
     for(let i in array){
         i *= 1
         const target = array[i]
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test, 1)).toBe(i)
     }
 })
@@ -234,7 +234,7 @@ it('above threshold: returns the higher near-match if the test cannot be satisif
         i *= 1
         const target = targets[i]
         const expected = expecteds[i]
-        const test = val => binarySearch.compare(target.length, val.length)
+        const test = val => binarySearch.compare(val.length, target.length)
         expect(binarySearch(array, test, 1)).toBe(expected)
     }
 })
@@ -243,7 +243,7 @@ it('above threshold: returns the higher near-match if the test cannot be satisif
 it('above threshold: finds a positive test anywhere in a range, regardless', ()=>{
     const max = 9
     for(let target = 0; target <= max; target++){
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test, 1)).toBe(target)
     }
 })
@@ -256,7 +256,7 @@ it('above threshold: returns the higher near-match if the test cannot be satisif
         i *= 1
         const target = targets[i]
         const expected = expecteds[i]
-        const test = val => binarySearch.compare(target, val)
+        const test = val => binarySearch.compare(val, target)
         expect(binarySearch(max, test, 1)).toBe(expected)
     }
 })
